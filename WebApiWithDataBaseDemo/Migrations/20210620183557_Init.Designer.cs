@@ -9,7 +9,7 @@ using WebApiWithDataBaseDemo.Data;
 namespace WebApiWithDataBaseDemo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210620182940_Init")]
+    [Migration("20210620183557_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,8 @@ namespace WebApiWithDataBaseDemo.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("PrimaryKey");
 
