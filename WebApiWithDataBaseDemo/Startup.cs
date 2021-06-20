@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using WebApiWithDataBaseDemo.Data;
 
 namespace WebApiWithDataBaseDemo
 {
@@ -26,7 +28,9 @@ namespace WebApiWithDataBaseDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
+            services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnectionString));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
