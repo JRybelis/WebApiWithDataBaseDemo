@@ -16,5 +16,17 @@ namespace WebApiWithDataBaseDemo.Data
         }
         public DbSet<ShopItem> ShopItems { get; set; }
         public DbSet<Shop> Shops { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            if (!Shops.Any())
+            {
+                Shops.Add(new Shop()
+                {
+                    Name = "DefaultShop"
+                });
+                SaveChanges();
+            }
+        }
     }
 }

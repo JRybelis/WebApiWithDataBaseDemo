@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApiWithDataBaseDemo.Data;
+using WebApiWithDataBaseDemo.Models;
 
 namespace WebApiWithDataBaseDemo.Controllers
 {
@@ -17,6 +18,43 @@ namespace WebApiWithDataBaseDemo.Controllers
         public ShopController(DataContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        [HttpGet]
+        public List<Shop> GetAll()
+        {
+            return _context.Shops.ToList();
+        }
+
+        [HttpGet("{id}")]
+        public Shop GetById(int id)
+        {
+            return _context.Shops.FirstOrDefault(s => s.Id == id);
+        }
+
+        [HttpPost]
+        public void Post(Shop shop)
+        {
+            _context.Add(shop);
+            _context.SaveChanges();
+        }
+        [HttpPut]
+        public void Update(Shop shop)
+        {
+            _context.Shops.Update(shop);
+            _context.SaveChanges();
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            var shop = _context.Shops.FirstOrDefault(s => s.Id == id);
+            if (shop != null)
+            {
+                _context.Shops.Remove(shop);
+                _context.SaveChanges();
+            }
+            
         }
     }
 }
