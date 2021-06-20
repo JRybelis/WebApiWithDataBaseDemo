@@ -11,7 +11,7 @@ namespace WebApiWithDataBaseDemo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ShopItemController
+    public class ShopItemController : ControllerBase
     {
         private readonly DataContext _context;
 
