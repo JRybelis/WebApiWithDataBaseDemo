@@ -15,5 +15,6 @@ namespace WebApiWithDataBaseDemo.Data
 
         }
         public DbSet<ShopItem> ShopItems { get; set; }
+        public DbSet<Shop> Shops { get; set; }
     }
 }
