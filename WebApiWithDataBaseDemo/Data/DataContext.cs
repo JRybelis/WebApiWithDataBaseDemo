@@ -19,14 +19,14 @@ namespace WebApiWithDataBaseDemo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (!Shops.Any())
-            {
-                Shops.Add(new Shop()
-                {
-                    Name = "DefaultShop"
-                });
-                SaveChanges();
-            }
+            //if (!Shops.Any())
+            //{
+            //    Shops.Add(new Shop()
+            //    {
+            //        Name = "DefaultShop"
+            //    });
+            //    SaveChanges();
+            //}
         }
     }
 }

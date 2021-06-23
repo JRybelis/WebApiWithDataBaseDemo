@@ -50,7 +50,7 @@ namespace WebApiWithDataBaseDemo.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var shopItem = _context.ShopItems.FirstOrDefault((s => s.PrimaryKey == id));
+            var shopItem = _context.ShopItems.FirstOrDefault(s => s.PrimaryKey == id);
 
             if (shopItem != null)
             {
